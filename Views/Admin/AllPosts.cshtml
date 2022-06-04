@@ -1,0 +1,31 @@
+﻿@using BlogTutorial.Models
+@model IEnumerable<Post>
+<h2>
+    All Blog Posts
+</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col" colspan=2>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+      {
+       <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Title</td>
+            <td>@item.Date</td>
+            <td>
+                <a class="btn btn-success" asp-action="UpdatePost" asp-controller="Admin" asp-route-Id="@item.Id">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-action="DeletePost" asp-controller="Admin" asp-route-Id="@item.Id">Delete</a>
+            </td>
+        </tr>
+      }
+  </tbody>
+</table>
